@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>About Us - Document Verification</title>
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <script src="https://cdn.jsdelivr.net/npm/particles.js"></script>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      height: 100vh;
+      background: linear-gradient(45deg, #0f2027, #203a43, #2c5364);
+      overflow-x: hidden;
+      color: white;
+      position: relative;
+    }
+
+    #particles-js {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+      z-index: -1;
+    }
+
+    .navbar {
+      background-color: rgba(0, 0, 0, 0.85);
+    }
+
+    .navbar-brand, .nav-link {
+      color: white !important;
+    }
+
+    .navbar-nav .nav-link:hover {
+      color: #ff5733 !important;
+    }
+
+    .about-container {
+      max-width: 900px;
+      margin: 100px auto 30px auto;
+      background-color: rgba(255, 255, 255, 0.08);
+      padding: 40px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+    }
+
+    h1, h2 {
+      font-weight: bold;
+      color: #ffcccb;
+    }
+
+    p, li {
+      font-size: 1.1rem;
+      line-height: 1.7;
+    }
+
+    footer {
+      text-align: center;
+      margin-top: 30px;
+      color: #ccc;
+      font-size: 0.9rem;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Particle Background -->
+  <div id="particles-js"></div>
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+    <div class="container">
+      <a class="navbar-brand" href="#">Document Verification</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="home.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link active" href="about.html">About Us</a></li>
+          <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+          <li class="nav-item"><a class="nav-link" href="login.html">Login</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- About Section -->
+  <div class="about-container text-white">
+    <h1 class="text-center mb-4">About Document Verification</h1>
+    <p>
+      This project is designed to help verify Voter ID documents by checking for essential fields such as:
+    </p>
+    <ul>
+      <li>Clearly visible name and photograph</li>
+      <li>Presence of a valid Voter ID number</li>
+      <li>Proof of Date of Birth</li>
+    </ul>
+
+    <p>
+      Users can upload their Voter ID file and mark the criteria they meet. The system checks whether at least 3 essential conditions are satisfied and displays whether the form is <strong>correct</strong> or <strong>incomplete</strong>.
+    </p>
+
+    <h2 class="mt-4">Technologies Used:</h2>
+    <ul>
+      <li>Frontend: HTML, CSS, Bootstrap 5, JavaScript</li>
+      <li>Particle Animation: Particles.js</li>
+      <li>Backend: Node.js, Express.js</li>
+      <li>Database: MongoDB</li>
+      <li>File Upload: Multer Middleware</li>
+    </ul>
+
+    <h2 class="mt-4">Contact Us</h2>
+    <p>
+      For any queries or support, please reach out at:  
+      <a href="mailto:deepikaranideeepika4@gmail.com" style="color: #ffc107;">deepikaranideeepika4@gmail.com</a>
+    </p>
+  </div>
+
+  <footer>
+    &copy; 2025 Document Verification System. All rights reserved.
+  </footer>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Particles.js Animation -->
+  <script>
+    particlesJS("particles-js", {
+      particles: {
+        number: { value: 60 },
+        color: { value: "#ffffff" },
+        shape: { type: "circle" },
+        opacity: { value: 0.4 },
+        size: { value: 3 },
+        move: { speed: 1.5 }
+      },
+      interactivity: {
+        events: {
+          onhover: { enable: true, mode: "repulse" },
+          onclick: { enable: true, mode: "push" }
+        }
+      }
+    });
+  </script>
+
+</body>
+</html>

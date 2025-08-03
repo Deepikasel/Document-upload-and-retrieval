@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Image Upload and Retrieval</title>
+  <script src="https://cdn.jsdelivr.net/npm/particles.js"></script>
+
+  <style>
+   /* body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: linear-gradient(45deg, #0f2027, #203a43, #2c5364);
+      overflow: auto;
+      scroll-behavior: smooth;
+      position: relative;
+      color: white;
+    }
+*/
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 40px 0; /* Optional: adds breathing room */
+  min-height: 100vh;
+  background: linear-gradient(45deg, #0f2027, #203a43, #2c5364);
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+  color: white;
+}
+
+    #particles-js {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+    }
+
+   /* .container {
+      background-color: rgba(255, 255, 255, 0.1);
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+      width: 500px;
+      color: white;
+      position: relative;
+      z-index: 1;
+    }*/
+    .container {
+  background-color: rgba(255, 255, 255, 0.1);
+  padding: 20px;
+  margin: 0 auto; /* Center horizontally */
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  width: 90%;
+  max-width: 500px;
+  color: white;
+  position: relative;
+  z-index: 1;
+}
+
+
+    h1, h2 {
+      text-align: center;
+      color: #fff;
+    }
+
+    form input, form textarea, #imageId {
+      width: 100%;
+      margin: 10px 0;
+      padding: 10px;
+      font-size: 16px;
+      border: none;
+      border-radius: 4px;
+    }
+
+    button {
+      width: 100%;
+      padding: 10px;
+      background-color: #ff5733;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #c70039;
+    }
+
+    #imageResult {
+      text-align: center;
+      margin-top: 20px;
+    }
+
+    #imageDisplay {
+      max-width: 100%;
+      height: auto;
+      margin-bottom: 20px;
+      display: none;
+    }
+  </style>
+
+</head>
+<body>
+
+  <!-- Particle Background -->
+
+  <div id="particles-js"></div>
+
+  <!-- Upload/Retrieve UI -->
+
+  <div class="container">
+    <h1>Image Upload</h1>
+    <form id="uploadForm" enctype="multipart/form-data">
+      <input type="file" id="image" name="image" required />
+      <textarea id="details" name="details" placeholder="Enter image details" required></textarea>
+      <button type="submit">Upload</button>
+    </form>
+
+```
+<h2>Retrieve Image</h2>
+<input type="text" id="imageId" placeholder="Enter Image ID" required />
+<button id="retrieveBtn">Retrieve</button>
+
+<div id="imageResult">
+  <img id="imageDisplay" src="" alt="Retrieved Image" />
+  <p id="imageDetails"></p>
+</div>
+```
+
+  </div>
+
+  <!-- Particle Animation Config -->
+
+  <script>
+    particlesJS("particles-js", {
+      particles: {
+        number: { value: 80 },
+        color: { value: "#ffffff" },
+        shape: { type: "circle" },
+        opacity: { value: 0.5 },
+        size: { value: 3 },
+        move: { speed: 2 }
+      },
+      interactivity: {
+        events: {
+          onhover: { enable: true, mode: "repulse" },
+          onclick: { enable: true, mode: "push" }
+        }
+      }
+    });
+  </script>
+
+  <!-- Upload & Retrieve Logic -->
+
+  <script>
+    const uploadForm = document.getElementById('uploadForm');
+    const imageInput = document.getElementById('image');
+    const detailsInput = document.getElementById('details');
+    const imageIdInput = document.getElementById('imageId');
+    const imageDisplay = document.getElementById('imageDisplay');
+    const imageDetails = document.getElementById('imageDetails');
+
+    uploadForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      const formData = new FormData();
+      formData.append('image', imageInput.files[0]);
+      formData.append('details', detailsInput.value);
+
+      try {
+        const res = await fetch('http://localhost:8000/upload', {
+          method: 'POST',
+          body: formData
+        });
+
+        const data = await res.json();
+        if (res.ok) {
+          alert('✅ Image uploaded successfully!\nImage ID: ' + data.id);
+          uploadForm.reset();
+        } else {
+          alert('❌ ' + data.msg);
+        }
+      } catch (err) {
+        console.error(err);
+        alert('❌ Error uploading image.');
+      }
+    });
+
+    document.getElementById('retrieveBtn').addEventListener('click', async () => {
+      const id = imageIdInput.value.trim();
+      if (!id) return alert("❗ Please enter an image ID");
+      try {
+        const res = await fetch(`http://localhost:8000/get/${id}`);
+        const data = await res.json();
+
+        if (res.ok) {
+          imageDisplay.src = `http://localhost:8000${data.imageURL}`;
+          imageDisplay.style.display = 'block';
+          imageDetails.textContent = `📄 Details: ${data.details}`;
+        } else {
+          imageDisplay.style.display = 'none';
+          imageDetails.textContent = '';
+          alert('❌ ' + data.msg);
+        }
+      } catch (err) {
+        console.error(err);
+        alert('❌ Error retrieving image.');
+      }
+    });
+  </script>
+
+</body>
+</html>
