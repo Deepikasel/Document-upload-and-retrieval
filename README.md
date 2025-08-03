@@ -75,8 +75,8 @@ DOCUMENT-UPLOAD-AND-RETRIEVE/
 
 
 
-🎓 Journal and 🏅 Certificate
+## 🎓 Journal and 🏅 Certificate
 
-📘 Click here to view the Journal(assets/certificate.pdf)
+- 📘 [Click here to view the Journal](https://github.com/Deepikasel/Document-upload-and-retrieval/raw/main/assets/journal.pdf)
+- 🏆 [Click here to view the Certificate](https://github.com/Deepikasel/Document-upload-and-retrieval/raw/main/assets/certificate.pdf)
 
-🏆 Click here to view the Certificate
