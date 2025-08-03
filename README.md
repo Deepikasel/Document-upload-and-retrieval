@@ -51,4 +51,7 @@ DOCUMENT-UPLOAD-AND-RETRIEVE/
 ├── README.md # Project readme file
 ├── package.json # Node project config
 
+🎓 Journal and 🏅 Certificate
+📘 Click here to view the Journal
 
+🏆 Click here to view the Certificate
