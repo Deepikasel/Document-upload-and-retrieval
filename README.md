@@ -28,30 +28,55 @@ This is a web-based system that allows users to **upload image documents**, auto
 
 DOCUMENT-UPLOAD-AND-RETRIEVE/
 ├── config/
+
 │ └── db.js # MongoDB connection setup
+
 ├── models/
+
 │ └── ... # Mongoose models (if any)
+
 ├── node_modules/ # Installed npm packages
+
 ├── public/
+
 │ ├── css/ # Stylesheets
+
 │ ├── js/ # Frontend JavaScript
+
 │ ├── about.html # About page
+
 │ ├── contact.html # Contact form
+
 │ ├── db.php # PHP backend example
+
 │ ├── help.html # Help/FAQ page
+
 │ ├── home.html # Homepage
+
 │ ├── image.html # Image upload & retrieve form
+
 │ ├── login.html # Login form
+
 │ ├── register.html # Registration form
+
 │ ├── sign1.php # Signup (PHP)
+
 │ └── test_mysqli.php # PHP-MySQL connection test
+
 ├── uploads/ # Uploaded image files
+
 │ └── [UUID].png # Saved using unique IDs
+
 ├── .gitignore # Ignore node_modules, uploads, .env
+
 ├── README.md # Project readme file
+
 ├── package.json # Node project config
 
+
+
 🎓 Journal and 🏅 Certificate
-📘 Click here to view the Journal
+
+📘 Click here to view the Journal(assets/certificate.pdf)
 
 🏆 Click here to view the Certificate
